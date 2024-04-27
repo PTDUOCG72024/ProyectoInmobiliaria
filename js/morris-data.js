@@ -1,117 +1,99 @@
-$(function() {
-
-    Morris.Area({
-        element: 'morris-area-chart',
-        data: [{
-            period: '2010 Q1',
-            iphone: 2666,
-            ipad: null,
-            itouch: 2647
-        }, {
-            period: '2010 Q2',
-            iphone: 2778,
-            ipad: 2294,
-            itouch: 2441
-        }, {
-            period: '2010 Q3',
-            iphone: 4912,
-            ipad: 1969,
-            itouch: 2501
-        }, {
-            period: '2010 Q4',
-            iphone: 3767,
-            ipad: 3597,
-            itouch: 5689
-        }, {
-            period: '2011 Q1',
-            iphone: 6810,
-            ipad: 1914,
-            itouch: 2293
-        }, {
-            period: '2011 Q2',
-            iphone: 5670,
-            ipad: 4293,
-            itouch: 1881
-        }, {
-            period: '2011 Q3',
-            iphone: 4820,
-            ipad: 3795,
-            itouch: 1588
-        }, {
-            period: '2011 Q4',
-            iphone: 15073,
-            ipad: 5967,
-            itouch: 5175
-        }, {
-            period: '2012 Q1',
-            iphone: 10687,
-            ipad: 4460,
-            itouch: 2028
-        }, {
-            period: '2012 Q2',
-            iphone: 8432,
-            ipad: 5713,
-            itouch: 1791
-        }],
-        xkey: 'period',
-        ykeys: ['iphone', 'ipad', 'itouch'],
-        labels: ['iPhone', 'iPad', 'iPod Touch'],
-        pointSize: 2,
-        hideHover: 'auto',
-        resize: true
-    });
-
-    Morris.Donut({
-        element: 'morris-donut-chart',
-        data: [{
-            label: "Download Sales",
-            value: 12
-        }, {
-            label: "In-Store Sales",
-            value: 30
-        }, {
-            label: "Mail-Order Sales",
-            value: 20
-        }],
-        resize: true
-    });
-
+(function() {
     Morris.Bar({
-        element: 'morris-bar-chart',
-        data: [{
-            y: '2006',
-            a: 100,
-            b: 90
-        }, {
-            y: '2007',
-            a: 75,
-            b: 65
-        }, {
-            y: '2008',
-            a: 50,
-            b: 40
-        }, {
-            y: '2009',
-            a: 75,
-            b: 65
-        }, {
-            y: '2010',
-            a: 50,
-            b: 40
-        }, {
-            y: '2011',
-            a: 75,
-            b: 65
-        }, {
-            y: '2012',
-            a: 100,
-            b: 90
-        }],
-        xkey: 'y',
-        ykeys: ['a', 'b'],
-        labels: ['Series A', 'Series B'],
-        hideHover: 'auto',
-        resize: true
+            element: 'morris-bar-chart',
+            data: [{
+                y: 'Alma Viva',
+                a: 1,
+                b: 1
+            }, {
+                y: 'CCU',
+                a: 0,
+                b: 1
+            }, {
+                y: 'Enex Victoria',
+                a: 2,
+                b: 1
+            }, {
+                y: 'Enjoy Viña',
+                a: 1,
+                b: 3
+            }],
+            xkey: 'y',
+            ykeys: ['a', 'b'],
+            labels: ['Alta', 'Baja'],
+            hideHover: 'auto',
+            resize: true
+        });
+    
+    Morris.Line({
+            element: 'morris-line-chart',
+            data: [{
+                        edad: 35,
+                        interno: null,
+                        subcontrato: null
+                    }, {
+                        edad: 36,
+                        interno: null,
+                        subcontrato: 4.0
+                    }, {
+                        edad: 37,
+                        interno: null,
+                        subcontrato: null
+                    }, {
+                        edad: 38,
+                        interno: null,
+                        subcontrato: null
+                    }, {
+                        edad: 39,
+                        interno: null,
+                        subcontrato: null
+                    }, {
+                        edad: 40,
+                        interno: null,
+                        subcontrato: null
+                    }, {
+                        edad: 41,
+                        interno: null,
+                        subcontrato: null
+                    }, {
+                        edad: 42,
+                        interno: null,
+                        subcontrato: null
+                    }, {
+                        edad: 43,
+                        interno: null,
+                        subcontrato: null
+                    }, {
+                        edad: 44,
+                        interno: null,
+                        subcontrato: null
+                    }, {
+                        edad: 45,
+                        interno: null,
+                        subcontrato: null
+                    }, {
+                        edad: 46,
+                        interno: null,
+                        subcontrato: null
+                    }, {
+                        edad: 47,
+                        interno: 3.0,
+                        subcontrato: null
+                        },
+                    {
+                        edad: 48,
+                        interno: null,
+                        subcontrato: null
+                    }
+                    ],
+            xkey: 'edad',
+            ykeys: ['interno', 'subcontrato'],
+            labels: ['interno', 'subcontrato'],
+            parseTime: false,
+            pointSize: 15,
+            hideHover: 'auto',
+            resize: true,
+            verticalGrid: true
+        });
+    
     });
-
-});
