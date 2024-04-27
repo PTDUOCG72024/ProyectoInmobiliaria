@@ -1,5 +1,4 @@
 am5.ready(function() {
-
     // Create root element
     // https://www.amcharts.com/docs/v5/getting-started/#Root_element
     var root = am5.Root.new("chartdiv");
@@ -235,5 +234,3 @@ am5.ready(function() {
     chart.appear(1000, 100);
     
     }); // end am5.ready()
-    
-        
