@@ -26,8 +26,7 @@ function auth(event) {
     })
     .then(data => {
         console.log(data)
-        window.location.replace("dashboard");
-        outputElement.textContent = JSON.stringify(data, null, 2);
+        window.location.replace("paginaInicio.html");
     })
     .catch(error => {
         console.error('Error:', error);
