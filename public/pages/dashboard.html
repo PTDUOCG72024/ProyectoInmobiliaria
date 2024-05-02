@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -32,6 +32,12 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="../js/pieChartNacionalidad.js"></script>
+    <script src="../js/pieCargo.js"></script>
+    <script src="../js/parteLesionada.js"></script>
+    <script src="../js/areaConstructiva.js"></script>
+    <script src="../js/detallesIngreso.js"></script>
 
 
 </head>
@@ -450,7 +456,7 @@
                                     </div>
                                     <!-- /.panel-heading -->
                                     <div class="panel-body">
-                                        <table class="table table-bordered table-hover table-striped">
+                                        <table class="table table-bordered table-hover table-striped" id="detalleIngreso">
                                             <thead>
                                             <tr>
                                                 <th>Reporte</th>
@@ -466,42 +472,6 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>2875636</td>
-                                                <td>Alma Viva</td>
-                                                <td>Subcontrato</td>
-                                                <td>Javier Cid</td>
-                                                <td>16637422-7</td>
-                                                <td>14/06/2023</td>
-                                                <td>Trabajo</td>
-                                                <td>Ley</td>
-                                                <td>Trabajador al momento de descender escala metálica, resbala al apoyar mal el pie en el peldaño, ocasionándole una caída al desprenderse escala</td>
-                                                <td>Luis Castillo</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2829692</td>
-                                                <td>Enex Victoria</td>
-                                                <td>Empresa</td>
-                                                <td>Hector Gonzalez</td>
-                                                <td>17788017-4</td>
-                                                <td>08/05/2023</td>
-                                                <td>Trabajo</td>
-                                                <td>Ley</td>
-                                                <td>Trabajador se encontraba realizando la tarea de descimbre de moldaje. al momento de despegar el moldaje del muro este cae de manera abrupta a una altura de unos 20 cm, golpeando al trabajador en su empeine del pie izquierdo.</td>
-                                                <td>Jose Avila</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2933636</td>
-                                                <td>Alma Viva</td>
-                                                <td>Empresa</td>
-                                                <td>Jose Ruiz</td>
-                                                <td>11851080-1</td>
-                                                <td>02/05/2023</td>
-                                                <td>Trabajo</td>
-                                                <td>Ley</td>
-                                                <td>Trabajador al momento de descimbrar escala al hacer palanca con el chuzo, roza una paipa que estaba en el muro de la escala, ocasionándole una herida en el dedo meñique de la mano derecha</td>
-                                                <td>Claudio Téllez</td>
-                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -550,6 +520,7 @@
 <script src="../js/flot/jquery.flot.time.js"></script>
 <script src="../js/flot/jquery.flot.tooltip.min.js"></script>
 <script src="../js/flot/flot-data.js"></script>
+
 
 <!-- Custom Theme JavaScript -->
 <script src="../js/startmin.js"></script>
