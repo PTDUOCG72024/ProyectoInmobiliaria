@@ -28,7 +28,7 @@ function register(event) {
      })
     .then(data => {
         console.log(data);
-        window.location.replace("login.html");
+        window.location.replace("login");
     })
     .catch(error => {
         console.error('Error:', error);

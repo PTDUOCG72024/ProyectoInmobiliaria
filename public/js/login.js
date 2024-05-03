@@ -26,7 +26,7 @@ function auth(event) {
     })
     .then(data => {
         console.log(data)
-        window.location.replace("paginaInicio.html");
+        window.location.replace("paginaInicio");
     })
     .catch(error => {
         console.error('Error:', error);
