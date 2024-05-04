@@ -27,8 +27,20 @@ function getCountCargo(data) {
     return countCargo;
 }
 
-async function getCargo() {
-    const apiUrl = 'https://pitagoras-api-production.up.railway.app/accidents';
+async function getCargo(initDate, endDate, project) {
+    var apiUrl = 'https://pitagoras-api-production.up.railway.app/accidents?';
+
+    if(project != undefined && project != 'all') {
+        apiUrl = apiUrl + "project_id="+project;
+    }
+
+    if (initDate != undefined) {
+        apiUrl = apiUrl + "&init_date="+initDate;
+        if(endDate != undefined) {
+            apiUrl = apiUrl + '&end_date=' + endDate;
+        }
+    }
+
     const requestOptions = {
         method: 'GET',
         headers: {
@@ -59,24 +71,30 @@ async function getCargo() {
 
     var dataCargo = getCountCargo(response);
 
-    var plotCargoObj = $.plot($("#flot-pie-chart-cargo"), dataCargo, {
-            series: {
-                pie: {
-                    show: true
-                }
-            },
-            grid: {
-                hoverable: true
-            },
-            tooltip: true,
-            tooltipOpts: {
-                content: getTooltip, // show percentages, rounding to 2 decimal places
-                shifts: {
-                    x: 20,
-                    y: 0
-                },
-                defaultTheme: false
-            }
-        });
+    if (dataCargo.length > 0) {
+        $("#flot-pie-chart-cargo").show();
+        var plotCargoObj = $.plot($("#flot-pie-chart-cargo"), dataCargo, {
+                    series: {
+                        pie: {
+                            show: true
+                        }
+                    },
+                    grid: {
+                        hoverable: true
+                    },
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: getTooltip, // show percentages, rounding to 2 decimal places
+                        shifts: {
+                            x: 20,
+                            y: 0
+                        },
+                        defaultTheme: false
+                    }
+                });
+    } else {
+        $("#flot-pie-chart-cargo").hide();
+    }
+
 
 }

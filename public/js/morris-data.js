@@ -1,30 +1,5 @@
 $(function() {
-    Morris.Bar({
-            element: 'morris-bar-chart',
-            data: [{
-                y: 'Alma Viva',
-                a: 1,
-                b: 1
-            }, {
-                y: 'CCU',
-                a: 0,
-                b: 1
-            }, {
-                y: 'Enex Victoria',
-                a: 2,
-                b: 1
-            }, {
-                y: 'Enjoy Viña',
-                a: 1,
-                b: 3
-            }],
-            xkey: 'y',
-            ykeys: ['a', 'b'],
-            labels: ['Alta', 'Baja'],
-            hideHover: 'auto',
-            resize: true
-        });
-    
+
     Morris.Line({
             element: 'morris-line-chart',
             data: [{
@@ -95,6 +70,6 @@ $(function() {
             resize: true,
             verticalGrid: true
         });
-    
+
     });
     

@@ -27,8 +27,23 @@ function getCountConstructionArea(data) {
     return constructionAreaCountData;
 }
 
-async function getAreaConstructiva() {
-    const apiUrl = 'https://pitagoras-api-production.up.railway.app/accidents';
+async function getAreaConstructiva(initDate, endDate, project) {
+    var apiUrl = 'https://pitagoras-api-production.up.railway.app/accidents?';
+
+    if(project != undefined && project != 'all') {
+        apiUrl = apiUrl + "project_id="+project;
+    }
+
+    if (initDate != undefined) {
+        apiUrl = apiUrl + "&init_date="+initDate;
+        if(endDate != undefined) {
+            apiUrl = apiUrl + '&end_date=' + endDate;
+        }
+    }
+
+console.log(apiUrl);
+
+
     const requestOptions = {
         method: 'GET',
         headers: {
@@ -59,7 +74,9 @@ async function getAreaConstructiva() {
 
     var dataAreaConstructiva = getCountConstructionArea(response);
 
-    var plotAreaConstructivaObj = $.plot($("#flot-pie-chart-area-constructiva"), dataAreaConstructiva, {
+    if(dataAreaConstructiva.length > 0) {
+        $("#flot-pie-chart-area-constructiva").show();
+        var plotAreaConstructivaObj = $.plot($("#flot-pie-chart-area-constructiva"), dataAreaConstructiva, {
                         series: {
                             pie: {
                                 show: true
@@ -78,5 +95,7 @@ async function getAreaConstructiva() {
                             defaultTheme: false
                         }
                     });
-
+    } else {
+        $("#flot-pie-chart-area-constructiva").hide();
+    }
 }

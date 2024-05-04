@@ -38,6 +38,8 @@
     <script src="../js/parteLesionada.js"></script>
     <script src="../js/areaConstructiva.js"></script>
     <script src="../js/detallesIngreso.js"></script>
+    <script src="../js/lesionPorGravedad.js"></script>
+    <script src="../js/dateTime.js"></script>
 
 
 </head>
@@ -50,7 +52,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/paginaInicio">Constructora Pitagoras</a>
+            <a class="navbar-brand" href="paginaInicio.html">Constructora Pitagoras</a>
         </div>
 
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -105,7 +107,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li>
-                        <a href="/perfil"><i class="fa fa-user fa-fw"></i> Usuario</a>
+                        <a href="perfil.html"><i class="fa fa-user fa-fw"></i> Usuario</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-gear fa-fw"></i> Configuración</a>
@@ -184,38 +186,48 @@
                                     <td width="20%">
                                         <span>Fecha de Inicial</span>
                                         <input id="initDate" width="270" />
+                                        <input id="initDateInput" type="hidden" value="" />
                                         <script>
                                             $('#initDate').datepicker({
-                                                uiLibrary: 'bootstrap'
+                                                uiLibrary: 'bootstrap',
+                                                format: 'dd/mm/yyyy'
+                                            });
+
+                                            $('#initDate').on('change', function(){
+                                                if($('#initDate').val() != $('#initDateInput').val()){
+                                                    $('#initDateInput').val($('#initDate').val());
+                                                    updateGraph();
+                                                }
                                             });
                                         </script>
                                     </td>
                                     <td width="20%">
                                         <span>Fecha de Término</span>
                                         <input id="endDate" width="270" />
+                                        <input id="endDateInput" type="hidden" value="" />
                                         <script>
                                             $('#endDate').datepicker({
-                                                uiLibrary: 'bootstrap'
+                                                uiLibrary: 'bootstrap',
+                                                format: 'dd/mm/yyyy'
+                                            });
+
+                                            $('#endDate').on('change', function(){
+                                                if($('#endDate').val() != $('#endDateInput').val()){
+                                                    $('#endDateInput').val($('#endDate').val());
+                                                    updateGraph();
+                                                }
                                             });
                                         </script>
                                     </td>
                                     <td width="60%">
                                         <div class="pull-right">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                                Seleccionar Proyectos
-                                                <span class="caret"></span>
-                                                </button>
-                                            <ul class="dropdown-menu pull-right" role="menu">
-                                                <li><a href="#">Alma Viva</a>
-                                                </li>
-                                                <li><a href="#">CCU</a>
-                                                </li>
-                                                <li><a href="#">Enex Victoria</a>
-                                                </li>
-                                                <li><a href="#">Enjoy Viña</a>
-                                                </li>
-                                            </ul>
+                                                <select name="project" class="btn btn-default btn-xs dropdown-toggle" id="project" onchange="updateGraph()">
+                                                    <option value="all" selected>Todos</option>
+                                                    <option value="662d892ea0679c9b53099f93">Alma Viva</option>
+                                                    <option value="66350d9d72c486a461657d38">CCU</option>
+                                                    <option value="66350d7172c486a461657d37">Enex Victoria</option>
+                                                </select>
                                         </div>
                                         </div>
                                     </td>
@@ -228,7 +240,7 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
+                    <!--<div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-fw"></i> Edad y Antigüedad Laboral
                             <div class="pull-right">
@@ -249,19 +261,19 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <!-- <div class="panel-body">
                             <div id="morris-line-chart"></div>
-                        </div>
+                        </div> -->
                         <!-- /.panel-body -->
-                    </div>
+                    <!--</div> -->
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-fw"></i> Gráfico de accidentes por Gravedad
                             <div>&nbsp;</div>
-                            <table width="100%">
+                            <!--<table width="100%">
                                 <tr>
                                     <td width="25%">
                                             <div class="btn-group" style="width:100%">
@@ -336,45 +348,24 @@
                                         </div>
                                     </td>
                                 </tr>
-                            </table>
+                            </table> -->
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-hover table-striped">
+                                        <table class="table table-bordered table-hover table-striped" id="lesionPorGravedad">
                                             <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Alma Viva</th>
-                                                <th>CCU</th>
-                                                <th>Enex Victoria</th>
-                                                <th>Enjoy Viña</th>
-                                            </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>Baja</td>
-                                                <td>1</td>
-                                                <td>0</td>
-                                                <td>2</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Alta</td>
-                                                <td>0</td>
-                                                <td>1</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                     <!-- /.table-responsive -->
                                 </div>
                                 <!-- /.col-lg-4 (nested) -->
-                                <div class="col-lg-8">
+                                <div class="col-lg-8" id="father-morris-bar-chart">
                                     <div id="morris-bar-chart"></div>
                                 </div>
                                 <!-- /.col-lg-8 (nested) -->
