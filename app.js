@@ -36,6 +36,11 @@ app.get('/paginaInicio', (req, res) => {
   res.sendFile(__dirname + '/public/pages/paginaInicio.html');
 });
 
+// Ruta para la página de login
+app.get('/login', (req, res) => {
+  res.sendFile(__dirname + '/public/pages/login.html');
+});
+
 const PORT = process.env.PORT || 3100;
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en http://localhost:${PORT}`);
